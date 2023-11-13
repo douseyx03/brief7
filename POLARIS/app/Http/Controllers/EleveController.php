@@ -81,6 +81,8 @@ class EleveController extends Controller
 
 
         $eleve->save();
+
+        return back();
     }
 
 
@@ -126,6 +128,9 @@ class EleveController extends Controller
      */
     public function destroy(Eleve $eleve)
     {
-        //
+        $eleve = Eleve::find($eleve);
+        $eleve->destroy();
+
+        return redirect('/');
     }
 }
