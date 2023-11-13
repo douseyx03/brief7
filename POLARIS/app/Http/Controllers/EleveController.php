@@ -18,11 +18,6 @@ class EleveController extends Controller
      */
     public function index()
     {
-        // $list = Eleve::all();
-        // return view('Eleve.list', [
-        //     'list' => $list
-        // ]);
-
         $eleves= Eleve::all();
         return view('welcome',compact('eleves'));
     }
@@ -65,12 +60,7 @@ class EleveController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'dateNaissance' => 'required',
-            // 'classe' => $classe,
-            // 'sexe' => $sexe,
-
         ]);
-        // dd($request);
-
 
         $eleve = new Eleve($eleveReq);
 
@@ -140,6 +130,7 @@ class EleveController extends Controller
         $eleve->sexe = $request->sexe;
 
         $eleve->save();
+        return redirect("/");
     }
 
     /**
