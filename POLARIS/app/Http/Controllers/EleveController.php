@@ -37,8 +37,52 @@ class EleveController extends Controller
      */
     public function store(StoreEleveRequest $request)
     {
-        //
+
+        if (in_array($request->classe, ['6eme', '5eme', '4eme', '3eme'])) {
+            $classe = $request->classe;
+        } else {
+            echo "Le format de la classe est incorrect";
+            die();
+        }
+
+        if (in_array($request->sexe, ['Feminin', 'Masculin'])) {
+            $sexe = $request->sexe;
+        } else {
+            echo "Le format du sexe est invalid est incorrect";
+            die();
+        }
+
+
+        $eleveReq = $request->validate([
+
+            'nom' => 'required',
+            'prenom' => 'required',
+            'dateNaissance' => 'required',
+            // 'classe' => $classe,
+            // 'sexe' => $sexe,
+
+        ]);
+        // dd($request);
+
+
+        $eleve = new Eleve($eleveReq);
+
+        $eleve->nom = $request->nom;
+
+        $eleve->prenom = $request->prenom;
+
+        $eleve->dateNaissance = $request->dateNaissance;
+
+        $eleve->classe = $classe;
+
+        $eleve->sexe = $sexe;
+
+
+
+
+        $eleve->save();
     }
+
 
     /**
      * Display the specified resource.

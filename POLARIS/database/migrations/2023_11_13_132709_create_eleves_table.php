@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->date('dateNaissance');
+            $table->enum('classe', ['6eme', '5eme', '4eme', '3eme']);
+            $table->enum('sexe', ['Feminin', 'Masculin']);
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EleveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/ajout', function () {
+    return view('Eleve.ajout');
+});
+
+
+Route::post('/ajouterEleve', [EleveController::class, 'store']);
