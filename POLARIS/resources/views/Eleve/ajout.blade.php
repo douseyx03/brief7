@@ -23,13 +23,6 @@
 
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label mt-4">Prenom</label>
-        <input type="text" name="classe" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter le prenom">
-
-    </div>
-
-
-    <!-- <div class="form-group">
         <label for="exampleSelect1" class="form-label mt-4">Classe</label>
         <select class="form-select" name="classe" id="exampleSelect1">
             <option value="6eme">6eme</option>
@@ -38,7 +31,7 @@
             <option value="3eme">3eme</option>
 
         </select>
-    </div> -->
+    </div>
 
     <div class="form-group">
         <label for="exampleSelect1" class="form-label mt-4">Sexe</label>
