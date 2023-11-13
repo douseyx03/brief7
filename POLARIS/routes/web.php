@@ -24,8 +24,14 @@ Route::get('/ajout', function () {
 
 Route::post('/ajouterEleve', [EleveController::class, 'store']);
 
+
 // Modifier
 Route::get('/getone/{eleve}', [EleveController::class, 'show'])->name('getOne');
 Route::post('/update', [EleveController::class, 'update']);
 
 Route::get('/list', [EleveController::class, 'index']);
+
+// La route de la suppression
+Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
+
+
