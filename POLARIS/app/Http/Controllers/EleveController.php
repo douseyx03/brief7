@@ -6,6 +6,7 @@ use App\Models\Eleve;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Models\User;
 
 class EleveController extends Controller
 {
@@ -16,7 +17,8 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        $eleves= Eleve::all();
+        return view('welcome',compact('eleves'));
     }
 
     /**

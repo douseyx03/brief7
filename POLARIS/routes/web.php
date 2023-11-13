@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [EleveController::class, 'index']);
 
 Route::get('/ajout', function () {
     return view('Eleve.ajout');
