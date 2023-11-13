@@ -6,6 +6,7 @@ use App\Models\Eleve;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Models\User;
 
 
 class EleveController extends Controller
@@ -17,10 +18,13 @@ class EleveController extends Controller
      */
     public function index()
     {
-        $list = Eleve::all();
-        return view('Eleve.list', [
-            'list' => $list
-        ]);
+        // $list = Eleve::all();
+        // return view('Eleve.list', [
+        //     'list' => $list
+        // ]);
+
+        $eleves= Eleve::all();
+        return view('welcome',compact('eleves'));
     }
 
     /**
@@ -81,6 +85,8 @@ class EleveController extends Controller
         $eleve->sexe = $sexe;
 
         $eleve->save();
+
+        return back();
     }
 
 
@@ -134,8 +140,6 @@ class EleveController extends Controller
         $eleve->sexe = $request->sexe;
 
         $eleve->save();
-
-        return redirect()->route('home');
     }
 
     /**
@@ -146,6 +150,9 @@ class EleveController extends Controller
      */
     public function destroy(Eleve $eleve)
     {
-        //
+        $eleve = Eleve::find($eleve);
+        $eleve->destroy();
+
+        return redirect('/');
     }
 }

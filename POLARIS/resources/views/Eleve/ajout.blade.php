@@ -7,25 +7,28 @@
     @csrf
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label mt-4">Nom</label>
-        <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter le nom">
+        <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter le nom">
 
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label mt-4">Prenom</label>
-        <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter le prenom">
+        <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter le prenom">
 
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label mt-4">Date de Naissance</label>
-        <input type="date" name="dateNaissance" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter la date de naissance">
+        <input type="date" name="dateNaissance" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="Enter la date de naissance">
 
     </div>
 
     </div>
-    
 
 
-     <div class="form-group">
+
+    <div class="form-group">
         <label for="exampleSelect1" class="form-label mt-4">Classe</label>
         <select class="form-select" name="classe" id="exampleSelect1">
             <option value="6eme">6eme</option>
@@ -34,7 +37,8 @@
             <option value="3eme">3eme</option>
 
         </select>
-    </div> 
+    </div>
+
 
     <div class="form-group">
         <label for="exampleSelect1" class="form-label mt-4">Sexe</label>
