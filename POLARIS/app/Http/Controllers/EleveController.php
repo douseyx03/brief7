@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
 
+
 class EleveController extends Controller
 {
     /**
@@ -16,7 +17,10 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        $list = Eleve::all();
+        return view('Eleve.list', [
+            'list' => $list
+        ]);
     }
 
     /**
@@ -26,7 +30,6 @@ class EleveController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -77,9 +80,6 @@ class EleveController extends Controller
 
         $eleve->sexe = $sexe;
 
-
-
-
         $eleve->save();
     }
 
@@ -92,18 +92,22 @@ class EleveController extends Controller
      */
     public function show(Eleve $eleve)
     {
-        //
+        $eleve = Eleve::find($eleve->id);
+
+
+        return view('Eleve.modifier', [
+            'eleve' => $eleve
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Eleve  $eleve
+    //  * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Http\Response
      */
     public function edit(Eleve $eleve)
     {
-        //
     }
 
     /**
@@ -115,7 +119,23 @@ class EleveController extends Controller
      */
     public function update(UpdateEleveRequest $request, Eleve $eleve)
     {
-        //
+        
+        $eleve = Eleve::find($request->id);
+    
+
+        $eleve->nom = $request->nom;
+
+        $eleve->prenom = $request->prenom;
+
+        $eleve->dateNaissance = $request->dateNaissance;
+
+        $eleve->classe = $request->classe;
+
+        $eleve->sexe = $request->sexe;
+
+        $eleve->save();
+
+        return redirect()->route('home');
     }
 
     /**

@@ -18,9 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/ajout', function () {
     return view('Eleve.ajout');
-});
+})->name('home');
 
 
 Route::post('/ajouterEleve', [EleveController::class, 'store']);
+
+// Modifier
+Route::get('/getone/{eleve}', [EleveController::class, 'show'])->name('getOne');
+Route::post('/update', [EleveController::class, 'update']);
+
+Route::get('/list', [EleveController::class, 'index']);
