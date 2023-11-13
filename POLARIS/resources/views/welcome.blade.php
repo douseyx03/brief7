@@ -13,7 +13,13 @@
                 Sexe: {{ $eleve->sexe }} <br>
                 <div style="display: flex;flex-direction:row; margin : 15px 10px 15px 0">
                     <a href="" class="btn btn-info">Modifier</a><br>
-                    <a href="" class="btn btn-danger">Supprimer</a><br>
+                    <form action="{{'/eleve/supprimerEleve/'.$eleve->id}}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                      </form>
+
+                    {{-- <a href="" class="btn btn-danger">Supprimer</a><br> --}}
                 </div><br><br>
             </div>
         @endforeach

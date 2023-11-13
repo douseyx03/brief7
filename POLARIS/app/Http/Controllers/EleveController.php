@@ -128,11 +128,19 @@ class EleveController extends Controller
      * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Eleve $eleve)
-    {
-        $eleve = Eleve::find($eleve);
-        $eleve->destroy();
+    // public function destroy(Eleve $eleve)
+    // {
+    //     $eleve = Eleve::find($eleve);
+    //     $eleve->destroy();
 
-        return redirect('/');
+    //     return redirect('/');
+    // }
+
+    public function destroy($id)
+    {
+        $eleve = Eleve::findOrFail($id);
+        $eleve->delete();
+        return redirect('/')->with('success', 'Supprimé avec succès');
     }
+    
 }

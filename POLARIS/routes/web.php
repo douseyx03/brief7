@@ -22,3 +22,7 @@ Route::get('/ajout', function () {
 
 
 Route::post('/ajouterEleve', [EleveController::class, 'store']);
+
+// La route de la suppression
+Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
+
