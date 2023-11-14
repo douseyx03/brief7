@@ -4,8 +4,8 @@
     <div class="row d-flex m-4 justify-content-center align-items-center">
         <hr>
         <div>
-            <a href="/ajoutNote" class="btn btn-primary">Ajouter une note</a>
-            <hr>
+            <!-- <a href="/ajoutNote" class="btn btn-primary">Ajouter une note</a> -->
+
             <div class="row-md-6 text-light">
 
 
@@ -37,10 +37,12 @@
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Noter</button><br>
+                    <button type="submit" class="btn btn-primary">Ajouter la note</button><br>
                     <br>
 
                 </form>
+
+                <hr>
 
 
             </div>
@@ -49,6 +51,8 @@
 
 
             <h1>Les Notes de {{ $eleves->nom }} {{ $eleves->prenom }} en classe de {{ $eleves->classe }}</h1>
+
+            <br>
 
 
             <table class="table table-striped ">
@@ -61,6 +65,8 @@
                 </thead>
                 <tbody>
                     @foreach ($notes as $note)
+
+                    @if ($note->eleve_id == $eleves->id)
 
                     <tr>
                         <td>{{ $note->matiere}}</td>
@@ -75,6 +81,8 @@
                             </form>
                         </td>
                     </tr>
+
+                    @endif
 
                     @endforeach
                 </tbody>
