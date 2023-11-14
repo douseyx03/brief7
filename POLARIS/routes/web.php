@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\EleveController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,15 @@ Route::get('/ajout', function () {
     return view('Eleve.ajout');
 })->name('home');
 
+Route::get('/ajoutNote', function () {
+    return view('Note.ajoutnote');
+})->name('ajoutNote');
+
 
 Route::post('/ajouterEleve', [EleveController::class, 'store']);
+
+Route::post('/ajouterNote', [NoteController::class, 'store']);
+
 
 
 // Modifier
@@ -34,4 +42,4 @@ Route::get('/list', [EleveController::class, 'index']);
 // La route de la suppression
 Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
-Route::get('/notes/{id}', [NoteController::class, 'index']);
+Route::post('/notes/{id}', [NoteController::class, 'index']);
