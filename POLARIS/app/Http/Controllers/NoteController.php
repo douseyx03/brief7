@@ -18,7 +18,9 @@ class NoteController extends Controller
     {
         $notes = Note::all();
         $eleves = Eleve::findOrFail($id);
-        return view('Note.notes', compact('notes', 'eleves'));
+        $elleves=Eleve::all();
+       
+        return view('Note.notes', compact('notes', 'eleves','elleves'));
     }
 
     /**
@@ -48,9 +50,10 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
-        //
+        
+       
     }
 
     /**
@@ -61,7 +64,14 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notes= Note::all();
+        $note = Note::findOrFail($id);
+
+
+        return view('note.modifierNote', [
+            'note' => $note,
+            'notes'=>$notes
+        ]);
     }
 
     /**
@@ -71,9 +81,23 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request);
+       $request->validate([
+            'note' => 'required',
+            'matiere' => 'required',
+            'eleve_id' => 'required'
+        ]);
+
+        $note =Note::find($request->id);
+        $note->note = $request->note;
+        $note->matiere = $request->matiere;
+        $note->eleve_id = $request->eleve_id;
+        $note->save();
+
+        // return redirect()->route('notes',['id'=>$request->id]);
+         return redirect('/');
     }
 
     /**

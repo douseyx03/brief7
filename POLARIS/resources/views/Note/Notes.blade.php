@@ -21,18 +21,18 @@
 
                             <tr>
                                 @foreach ($notes as $note)
-                                    @if ($note->eleve_id = $eleves->id)
-                                        <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
-                                        <td>{{ $note->note != '' ? $note->note : '0' }}</td>
-                                        <td> 
-                                            <div style="display: flex; flex-direction: row;">
-                                            <a class="btn btn-warning " href="/eleve/deleteNote/{{ $note->id }}">Delete</a>
-                                            <a class="btn btn-info ms-4" href="/eleve/updateNote/{{ $note->id }}"> Modifier</a>
-                                            </div>
-                                        </td>
-                                    @endif
+                                @if ($note->eleve_id= $eleves->id)
+                                    <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
+                                    <td>{{ $note->note != '' ? $note->note : '0' }}</td>
+                                    <td> 
+                                        <div style="display: flex; flex-direction: row;">
+                                        <a class="btn btn-warning " href="/eleve/deleteNote/{{ $note->id }}">Delete</a>
+                                        <a class="btn btn-info ms-4" href="/eleve/updateNote/{{ $note->id }}"> Modifier</a>
+                                        </div>
+                                    </td>
+                                @endif
                             </tr>
-                            @endforeach
+                                @endforeach                           
                         </tbody>
                     </table>
                 </div>
