@@ -1,71 +1,45 @@
 @extends('layout.navigation')
 @section('contenu')
-    <div class="div container my-4 ">
+    <div class="div container my-4 text-white ">
         <div class="row d-flex m-4 justify-content-center align-items-center">
-            <h1>Les Notes </h1>
             <hr>
             <div>
                 <a href="/ajouternote" class="btn btn-primary">Ajouter une note</a>
                 <hr>
-                @foreach ($eleves as $eleve)
-                    <div class="row-md-10">
-                        <table class="table table-striped ">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Prenom</th>
-                                    <th>Nom</th>
-                                    <th>Classe</th>
-                                    <th>Francais</th>
-                                    <th>Anglais</th>
-                                    <th>Maths</th>
-                                    <th>SVT</th>
-                                    <th>PC</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="row-md-6 text-light">
 
-                                <tr>
-                                    <td>{{ $eleve->id }}</td>
-                                    <td>{{ $eleve->prenom }}</td>
-                                    <td>{{ $eleve->nom }}</td>
-                                    <td>{{ $eleve->classe }}</td>
+                    <h1>Les Notes de {{ $eleves->nom }} {{ $eleves->prenom }} en classe de {{ $eleves->classe }}</h1>
 
-                                    @foreach ($notes as $note)
-                                        <td>{{ $note->francais }}</td>
-                                        <td>{{ $note->anglais }}</td>
-                                        <td>{{ $note->maths }}</td>
-                                        <td>{{ $note->svt }}</td>
-                                        <td>{{ $note->pc }}</td>
-                                        <td>
-                                            <a href="#"
-                                                class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
-                                            <form action="#" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Supprimer</button>
-                                            </form>
-                                        </td>
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr>
+                                <th>Matieres</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($notes as $note)
+                            @if ($note->eleve_id = $eleve->id)
+                            <tr>
+                                        <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
+                                        <td>{{ $note->notes != '' ? $note->notes : '0' }}</td>
+                                  
+                                    <td>
+                                        <a href="#" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
+                                        <form action="#" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        </form>
+                                    </td>
                                 </tr>
-                @endforeach
-                </tbody>
-                </table>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            @endforeach
         </div>
     </div>
-    </div>
-
-{{-- Dans le controller  --}}
-
-public function lister_note()
-    {   
-        $notes = Note::all();
-        return view('Note.notes', compact('notes'));
-    }
-
-    {{-- Dans Web --}}
-Route::get('/notes/{id}', [NoteController::class, 'lister_note']);
-
 @endsection()
