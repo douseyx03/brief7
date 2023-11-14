@@ -46,4 +46,3 @@ Route::get('/eleve/deleteNote/{id}', function ($id) {
     }
 
 });
-

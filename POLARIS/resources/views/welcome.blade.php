@@ -15,7 +15,7 @@
                 
                         <button type="submit" class="btn btn-warning font-weight-bold text-dark">Supprimer</button>
 
-                       <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger"></a>
+                       <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger">Voir plus</a>
                 </div>
             </div>
         </div>
