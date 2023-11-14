@@ -19,7 +19,6 @@
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<<<< Temporary merge branch 1
                             @foreach ($notes as $note)
                             @if ($note->eleve_id = $eleve->id)
                             <tr>
@@ -36,7 +35,6 @@
                                     </td>
                                 </tr>
                                 @endif
-=========
 
                             <tr>
                                 @foreach ($notes as $note)
@@ -52,7 +50,6 @@
                                         </td>
                                     @endif
                             </tr>
->>>>>>>>> Temporary merge branch 2
                             @endforeach
                         </tbody>
                     </table>
