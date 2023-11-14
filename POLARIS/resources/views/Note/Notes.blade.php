@@ -4,19 +4,21 @@
     <div class="row d-flex m-4 justify-content-center align-items-center">
         <hr>
         <div>
-            <a href="/ajoutNote" class="btn btn-primary">Ajouter une note</a>
-            <hr>
+            <!-- <a href="/ajoutNote" class="btn btn-primary">Ajouter une note</a> -->
+
             <div class="row-md-6 text-light">
 
 
 
                 <form action="/ajouterNote" method="post">
-                    @method('post')
+                    <!-- @method('post') -->
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="form-label mt-4">Note</label>
-                        <input type="float" name="note" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="la note">
-
+                        <input type="float" name="note" class="form-control" id="note" aria-describedby="emailHelp" placeholder="la note">
+                        @error('note')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -37,10 +39,12 @@
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Noter</button><br>
+                    <button type="submit" class="btn btn-primary">Ajouter la note</button><br>
                     <br>
 
                 </form>
+
+                <hr>
 
 
             </div>
@@ -49,6 +53,8 @@
 
 
             <h1>Les Notes de {{ $eleves->nom }} {{ $eleves->prenom }} en classe de {{ $eleves->classe }}</h1>
+
+            <br>
 
 
             <table class="table table-striped ">
@@ -74,6 +80,8 @@
                     </tr>
                     @endif
 
+
+                    @endif
 
                     @endforeach
                 </tbody>

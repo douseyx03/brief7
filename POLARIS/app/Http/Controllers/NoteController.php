@@ -59,7 +59,8 @@ class NoteController extends Controller
 
         $note->save();
 
-        return redirect('/');
+        
+        return redirect(route('home'));
     }
 
     /**
