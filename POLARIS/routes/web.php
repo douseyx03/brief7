@@ -34,4 +34,4 @@ Route::get('/list', [EleveController::class, 'index']);
 // La route de la suppression
 Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
-
+Route::get('/notes/{id}', [NoteController::class, 'index']);
