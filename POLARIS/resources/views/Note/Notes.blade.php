@@ -20,7 +20,6 @@
                         </thead>
                         <tbody>
                             @foreach ($notes as $note)
-                            @if ($note->eleve_id = $eleve->id)
                             <tr>
                                         <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
                                         <td>{{ $note->note != '' ? $note->note : '0' }}</td>
@@ -32,7 +31,6 @@
                                             </div>
                                         </td>
                                 </tr>
-                                @endif
                             @endforeach
                         </tbody>
                     </table>
