@@ -48,7 +48,7 @@ Route::get('/eleve/deleteNote/{id}', function ($id) {
 
     $delete = DB::table('notes')->where('id',$id)->delete();
     if ($delete == true) {
-        return back();
+        return back()->with('status','Note supprimée avec succès !!');;
     }else{
         dd("Echoué");
     }

@@ -11,9 +11,9 @@
         <label for="exampleSelect1" class="form-label mt-4"></label>
         <select class="form-select" name="matiere" id="exampleSelect1">
             <option value="{{$note->matiere}}" selected hidden>{{$note->matiere}}</option>
-            @foreach ($notes as $note1)
-            <option  value="{{$note1->matiere}}" >{{$note1->matiere}}</option>
-            @endforeach
+            @for ($i = 0; $i < count($notes); $i++)
+            <option  value="{{$notes[$i]}}" >{{$notes[$i]}}</option>
+            @endfor
         </select>
     </div>
     <input type="hidden" name="eleve_id" value="{{$note->eleve_id}}">

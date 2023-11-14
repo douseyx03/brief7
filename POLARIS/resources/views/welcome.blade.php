@@ -2,6 +2,11 @@
 @section('contenu')
 <div class="container my-4">
     <div class="row justify-content-center align-items-center">
+        @if(session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+        @endif
         @foreach ($eleves as $eleve)
         <div class="card m-4" style="width: 22rem; background-color: #ffffff;">
             <div class="card-body">

@@ -3,6 +3,11 @@
 <div class="div container my-4 text-white ">
     <div class="row d-flex m-4 justify-content-center align-items-center">
         <hr>
+        @if(session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+     @endif
         <div>
             <div class="row-md-6 text-light">
                 <form action="/ajouterNote" method="post">
@@ -21,9 +26,10 @@
                     <div class="form-group">
                         <label for="exampleSelect1" class="form-label mt-4">Matières</label>
                         <select class="form-select" name="matiere" id="exampleSelect1">
-                            @foreach ($notes as $note1)                               
-                            <option value="{{$note1->matiere}}">{{$note1->matiere}}</option>
-                            @endforeach
+                            @for ($i = 0; $i < count($note1); $i++)                   
+                            <option value="{{$note1[$i]}}">{{$note1[$i]}}</option>
+                            @endfor                              
+                          
                         </select>
                     </div>
                     <br>

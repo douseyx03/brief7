@@ -76,7 +76,7 @@ class EleveController extends Controller
 
         $eleve->save();
 
-        return back();
+        return back()->with('status','votre ajout a reussi !!');
     }
 
 
@@ -130,7 +130,7 @@ class EleveController extends Controller
         $eleve->sexe = $request->sexe;
 
         $eleve->save();
-        return redirect("/");
+        return redirect("/")->with('status','votre modification a reussi !!');;
     }
 
     /**

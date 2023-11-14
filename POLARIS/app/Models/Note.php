@@ -14,4 +14,8 @@ class Note extends Model
         'matiere'
 
     ];
+    public static function getMatiere(){
+        $option=['Français','Anglais','Mathematique','P/C','SVT'];
+        return $option;
+    }
 }

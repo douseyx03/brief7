@@ -55,7 +55,7 @@
         </div>
         <br>
         <br>
-        <button type="submit" class="btn btn-primary">Ajouter</button><br>
+        <button type="submit" class="btn btn-primary">Modifier</button><br>
         <br>
 
         

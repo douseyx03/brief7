@@ -17,9 +17,10 @@ class NoteController extends Controller
      */
         public function index(int $id)
     {
+        $note1= Note::getMatiere();
         $notes = Note::all();
         $eleves = Eleve::findOrFail($id);
-        return view('Note.notes', compact('notes', 'eleves'));
+        return view('Note.notes', compact('notes', 'eleves','note1'));
     }
 
     /**
@@ -40,13 +41,14 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request);
-
-
+        if (in_array($request->matiere,['Français','Anglais','Mathematique','P/C','SVT'])) {
+           $matiere=$request->matiere;
+        }else {
+           return back()->with('status','votre matiere est inexistante');
+            die();
+        }
         $noteReq = $request->validate([
-            'note' => 'required',
-            'matiere' => 'required',
+            'note' => 'required|numeric|min:0|max:20',
             'eleve' => 'required'
         ]);
 
@@ -59,8 +61,7 @@ class NoteController extends Controller
 
         $note->save();
 
-        
-        return redirect(route('home'));
+        return redirect("/notes/$request->eleve")->with('status','Bravo votre note a été ajouté avec succes');;
     }
 
     /**
@@ -83,7 +84,7 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        $notes= Note::all();
+        $notes= Note::getMatiere();
         $note = Note::findOrFail($id);
 
 
@@ -102,19 +103,24 @@ class NoteController extends Controller
      */
     public function update(Request $request)
     {
+        if (in_array($request->matiere,['Français','Anglais','Mathematique','P/C','SVT'])) {
+           $matiere=$request->matiere;
+        }else {
+            return back()->with('status','votre matiere est inexistante');
+            die();
+        }
         
        $request->validate([
-            'note' => 'required',
-            'matiere' => 'required',
+            'note' => 'required|numeric|min:0|max:20',
             'eleve_id' => 'required'
         ]);
         $note =Note::find($request->id);
         $note->note = $request->note;
         $note->matiere = $request->matiere;
         if ($note->save()) {
-            return redirect("/notes/$note->eleve_id");
+            return redirect("/notes/$note->eleve_id")->with('status','Bravo votre note a été mise a jour avec succes');
         }else {
-            return back()->withInput();
+            return back()->with('status','votre modification a echoué  !!');
         }
         
         

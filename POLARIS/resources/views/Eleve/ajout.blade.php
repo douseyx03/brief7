@@ -1,8 +1,11 @@
 @extends('layout.navigation')
 
 @section('contenu')
-
-
+@if(session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+        @endif
 <form action="/ajouterEleve" method="post">
     @csrf
     <div class="form-group">
