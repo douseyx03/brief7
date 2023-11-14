@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->float('note');
             $table->enum('matiere', ['Français', 'Anglais', 'Mathematique', 'P/C', 'SVT']);
-            $table->foreignIdFor(Eleve::class)->constrained();
+            $table->foreignIdFor(Eleve::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

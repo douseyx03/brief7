@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EleveController;
+use App\Http\Controllers\NoteController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +37,14 @@ Route::get('/list', [EleveController::class, 'index']);
 Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
 Route::get('/notes/{id}', [NoteController::class, 'index']);
+
+Route::get('/eleve/deleteNote/{id}', function ($id) {
+
+    $delete = DB::table('notes')->where('id',$id)->delete();
+    if ($delete == true) {
+        return back();
+    }else{
+        dd("Echoué");
+    }
+
+});

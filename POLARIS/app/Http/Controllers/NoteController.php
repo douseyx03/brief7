@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Eleve;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -12,9 +14,11 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $id)
     {
-        //
+        $notes = Note::all();
+        $eleves = Eleve::findOrFail($id);
+        return view('Note.notes', compact('notes', 'eleves'));
     }
 
     /**
