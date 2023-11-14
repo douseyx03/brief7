@@ -20,9 +20,6 @@
                     <form action="/notes/{{$eleve->id}}" method="post">
                         @csrf
                         <button type="submit" value="{{$eleve->id}}" class="btn btn-danger font-weight-bold text-dark">Voir plus</button>
-
-                        {{-- <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger"></a> --}}
-
                     </form>
                 </div>
             </div>
