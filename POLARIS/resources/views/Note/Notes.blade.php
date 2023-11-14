@@ -23,23 +23,6 @@
                             @if ($note->eleve_id = $eleve->id)
                             <tr>
                                         <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
-                                        <td>{{ $note->notes != '' ? $note->notes : '0' }}</td>
-                                  
-                                    <td>
-                                        <a href="#" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
-                                        <form action="#" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endif
-
-                            <tr>
-                                @foreach ($notes as $note)
-                                    @if ($note->eleve_id = $eleves->id)
-                                        <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
                                         <td>{{ $note->note != '' ? $note->note : '0' }}</td>
                                   
                                         <td> 
@@ -48,8 +31,7 @@
                                             <a class="btn btn-info ms-4" href="/eleve/updateNote/{{ $note->id }}"> Modifier</a>
                                             </div>
                                         </td>
-                                    @endif
-                            </tr>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
