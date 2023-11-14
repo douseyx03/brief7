@@ -82,16 +82,22 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $req)
     {
-        $notes= Note::getMatiere();
-        $note = Note::findOrFail($id);
-
-
-        return view('note.modifierNote', [
+        $note1= Note::getMatiere();
+        $notes = Note::all();
+        $eleves= Eleve::findOrFail($req->eleve_id);
+        $note = Note::findOrFail($req->id);
+        $editNote='ok';
+        return view("note.Notes", [
             'note' => $note,
-            'notes'=>$notes
+            'notes'=>$notes,
+            'editNote'=> $editNote,
+            'note1'=> $note1,
+            'eleves'=> $eleves,
+
         ]);
+        return redirect("/notes/$req->eleve_id");
     }
 
     /**
@@ -103,6 +109,7 @@ class NoteController extends Controller
      */
     public function update(Request $request)
     {
+        
         if (in_array($request->matiere,['Français','Anglais','Mathematique','P/C','SVT'])) {
            $matiere=$request->matiere;
         }else {
@@ -116,7 +123,7 @@ class NoteController extends Controller
         ]);
         $note =Note::find($request->id);
         $note->note = $request->note;
-        $note->matiere = $request->matiere;
+        $note->matiere = $matiere;
         if ($note->save()) {
             return redirect("/notes/$note->eleve_id")->with('status','Bravo votre note a été mise a jour avec succes');
         }else {

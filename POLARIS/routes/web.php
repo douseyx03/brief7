@@ -55,5 +55,5 @@ Route::get('/eleve/deleteNote/{id}', function ($id) {
 
 });
 
-Route::get('/eleve/updateNote/{id}',[NoteController::class, 'edit']);
+Route::post('/eleve/updateNote/{id}',[NoteController::class, 'edit']);
 Route::post('/updateNote',[NoteController::class, 'update']);
