@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
 use App\Models\Note;
+use App\Models\Eleve;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -16,12 +18,9 @@ class NoteController extends Controller
      */
     public function index(int $id)
     {
-        // dd($id); 
-
-        $notes = Note::where("eleve_id", $id);
+        $notes = Note::all();
         $eleves = Eleve::findOrFail($id);
-        // dd($eleves);
-        return view('Note.notes', compact('notes', 'eleves', 'id'));
+        return view('Note.notes', compact('notes', 'eleves'));
     }
 
     /**
