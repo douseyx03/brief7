@@ -37,7 +37,7 @@ Route::get('/list', [EleveController::class, 'index']);
 // La route de la suppression
 Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
-Route::post('/notes/{id}', [NoteController::class, 'index']);
+Route::get('/notes/{id}', [NoteController::class, 'index']);
 
 Route::get('/eleve/deleteNote/{id}', function ($id) {
 
