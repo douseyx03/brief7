@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
 use App\Models\Note;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -14,7 +15,7 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $id)
+        public function index(int $id)
     {
         $notes = Note::all();
         $eleves = Eleve::findOrFail($id);
@@ -39,7 +40,27 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // dd($request);
+
+
+        $noteReq = $request->validate([
+            'note' => 'required',
+            'matiere' => 'required',
+            'eleve' => 'required'
+        ]);
+
+        $note = new Note($noteReq);
+
+        $note->note = $request->note;
+        $note->matiere = $request->matiere;
+        $note->eleve_id = $request->eleve;
+
+
+        $note->save();
+
+        
+        return redirect(route('home'));
     }
 
     /**
@@ -48,9 +69,10 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
-        //
+        
+       
     }
 
     /**
@@ -61,7 +83,14 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notes= Note::all();
+        $note = Note::findOrFail($id);
+
+
+        return view('note.modifierNote', [
+            'note' => $note,
+            'notes'=>$notes
+        ]);
     }
 
     /**
@@ -71,9 +100,24 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
+       $request->validate([
+            'note' => 'required',
+            'matiere' => 'required',
+            'eleve_id' => 'required'
+        ]);
+        $note =Note::find($request->id);
+        $note->note = $request->note;
+        $note->matiere = $request->matiere;
+        if ($note->save()) {
+            return redirect("/notes/$note->eleve_id");
+        }else {
+            return back()->withInput();
+        }
+        
+        
     }
 
     /**

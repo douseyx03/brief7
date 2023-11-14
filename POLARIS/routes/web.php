@@ -20,10 +20,17 @@ Route::get('/', [EleveController::class, 'index'])->name('home');
 
 Route::get('/ajout', function () {
     return view('Eleve.ajout');
-})->name('home');
+})->name('ajoutEleve');
+
+Route::post('/ajoutNote', function () {
+    return view('Note.ajoutnote');
+})->name('ajoutNote');
 
 
 Route::post('/ajouterEleve', [EleveController::class, 'store']);
+
+Route::post('/ajouterNote', [NoteController::class, 'store']);
+
 
 
 // Modifier
@@ -35,7 +42,10 @@ Route::get('/list', [EleveController::class, 'index']);
 // La route de la suppression
 Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
+<<<<<<<<< Temporary merge branch 1
 Route::post('/notes/{id}', [NoteController::class, 'index']);
+=========
+Route::get('/notes/{id}', [NoteController::class, 'index']);
 
 Route::get('/eleve/deleteNote/{id}', function ($id) {
 
@@ -47,3 +57,6 @@ Route::get('/eleve/deleteNote/{id}', function ($id) {
     }
 
 });
+
+Route::get('/eleve/updateNote/{id}',[NoteController::class, 'edit']);
+Route::post('/updateNote',[NoteController::class, 'update']);
