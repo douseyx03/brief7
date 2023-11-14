@@ -20,9 +20,9 @@ Route::get('/', [EleveController::class, 'index'])->name('home');
 
 Route::get('/ajout', function () {
     return view('Eleve.ajout');
-})->name('home');
+})->name('ajoutEleve');
 
-Route::get('/ajoutNote', function () {
+Route::post('/ajoutNote', function () {
     return view('Note.ajoutnote');
 })->name('ajoutNote');
 
