@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
 use App\Models\Note;
-use App\Models\Eleve;
-use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
