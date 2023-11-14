@@ -15,7 +15,7 @@
                     <form action="{{'/eleve/supprimerEleve/'.$eleve->id}}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger font-weight-bold text-dark">Supprimer</button>
+                        <button type="submit" class="btn btn-warning">Supprimer</button>
                     </form>
                 </div>
             </div>
