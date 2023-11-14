@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\NoteController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +33,6 @@ Route::post('/update', [EleveController::class, 'update']);
 Route::get('/list', [EleveController::class, 'index']);
 
 // La route de la suppression
-Route::delete('/eleve/supprimerEleve/{id}', [EleveController::class, 'destroy']);
 
 Route::get('/notes/{id}', [NoteController::class, 'index']);
 

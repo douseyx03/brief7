@@ -12,18 +12,10 @@
                 <p class="card-text">Sexe: <strong>{{ $eleve->sexe }}</strong></p>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <a href="{{ route('getOne',['eleve'=>$eleve->id]) }}" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
-                    <form action="{{'/eleve/supprimerEleve/'.$eleve->id}}" method="post">
-                        @method('delete')
-                        @csrf
+                
                         <button type="submit" class="btn btn-warning font-weight-bold text-dark">Supprimer</button>
-                    </form>
-                    <form action="/notes/{{$eleve->id}}" method="post">
-                        @csrf
-                        <button type="submit" value="{{$eleve->id}}" class="btn btn-danger font-weight-bold text-dark">Voir plus</button>
 
-                        {{-- <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger"></a> --}}
-
-                    </form>
+                       <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger"></a>
                 </div>
             </div>
         </div>
