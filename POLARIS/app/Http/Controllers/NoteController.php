@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
 use App\Models\Note;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -16,11 +17,7 @@ class NoteController extends Controller
      */
     public function index(int $id)
     {
-        $notes = Note::all();
-        $eleves = Eleve::findOrFail($id);
-        $elleves=Eleve::all();
-       
-        return view('Note.notes', compact('notes', 'eleves','elleves'));
+        //
     }
 
     /**
@@ -41,7 +38,26 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // dd($request);
+
+
+        $noteReq = $request->validate([
+            'note' => 'required',
+            'matiere' => 'required',
+            'eleve' => 'required'
+        ]);
+
+        $note = new Note($noteReq);
+
+        $note->note = $request->note;
+        $note->matiere = $request->matiere;
+        $note->eleve_id = $request->eleve;
+
+
+        $note->save();
+
+        return redirect('/');
     }
 
     /**
