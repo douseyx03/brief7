@@ -1,3 +1,5 @@
+@extends('layout.navigation')
+@section('contenu')
 <form action="/updateNote" method="post">
     @csrf
     <div class="form-group">
@@ -20,3 +22,4 @@
     <button type="submit" class="btn btn-primary" >Modifier</button><br>
     <br>
 </form>
+@endsection
