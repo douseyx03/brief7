@@ -3,7 +3,7 @@
 <div class="container my-4">
     <div class="row justify-content-center align-items-center">
         @foreach ($eleves as $eleve)
-            <div class="card m-4" style="width: 18rem; background-color: #ffffff;"> <!-- Fond blanc -->
+            <div class="card m-4" style="width: 22rem; background-color: #ffffff;"> <!-- Fond blanc -->
                 <div class="card-body">
                     <h5 class="card-title">Prénom de l'élève: <strong>{{ $eleve->prenom }}</strong></h5>
                     <p class="card-text">Nom de l'élève: <strong>{{ $eleve->nom }}</strong></p>
