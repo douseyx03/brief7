@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\DB;
@@ -48,3 +49,4 @@ Route::get('/eleve/deleteNote/{id}', function ($id) {
     }
 
 });
+
