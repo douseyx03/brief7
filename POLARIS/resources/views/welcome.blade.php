@@ -17,13 +17,7 @@
                         @csrf
                         <button type="submit" class="btn btn-warning font-weight-bold text-dark">Supprimer</button>
                     </form>
-                    <form action="/notes/{{$eleve->id}}" method="post">
-                        @csrf
-                        <button type="submit" value="{{$eleve->id}}" class="btn btn-danger font-weight-bold text-dark">Voir plus</button>
-
-                        {{-- <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger"></a> --}}
-
-                    </form>
+                        <a type="submit" href="/notes/{{$eleve->id}}" class="btn btn-danger">Voir plus</a>
                 </div>
             </div>
         </div>

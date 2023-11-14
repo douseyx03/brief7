@@ -15,9 +15,11 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $id)
+        public function index(int $id)
     {
-        //
+        $notes = Note::all();
+        $eleves = Eleve::findOrFail($id);
+        return view('Note.notes', compact('notes', 'eleves'));
     }
 
     /**
@@ -99,21 +101,22 @@ class NoteController extends Controller
      */
     public function update(Request $request)
     {
-        // dd($request);
+        
        $request->validate([
             'note' => 'required',
             'matiere' => 'required',
             'eleve_id' => 'required'
         ]);
-
         $note =Note::find($request->id);
         $note->note = $request->note;
         $note->matiere = $request->matiere;
-        $note->eleve_id = $request->eleve_id;
-        $note->save();
-
-        // return redirect()->route('notes',['id'=>$request->id]);
-         return redirect('/');
+        if ($note->save()) {
+            return redirect("/notes/$note->eleve_id");
+        }else {
+            return back()->withInput();
+        }
+        
+        
     }
 
     /**

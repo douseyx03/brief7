@@ -61,20 +61,19 @@
                 </thead>
                 <tbody>
                     @foreach ($notes as $note)
-
+                    @if ($note->eleve_id===$eleves->id)
+                        
                     <tr>
                         <td>{{ $note->matiere}}</td>
                         <td>{{ $note->note}}</td>
 
-                        <td>
-                            <a href="#" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
-                            <form action="#" method="">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
-                            </form>
+                            <td>
+                            <a href="/eleve/updateNote/{{$note->id}}" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
+                            <a href="/eleve/deleteNote/{{$note->id}}" class="btn btn-warning mr-2 font-weight-bold text-dark">Supprimer</a>
                         </td>
                     </tr>
+                    @endif
+
 
                     @endforeach
                 </tbody>

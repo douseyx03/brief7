@@ -14,8 +14,8 @@
             @endforeach
         </select>
     </div>
-    <input type="hidden" name="eleve_id" value="{{$note1->eleve_id}}">
-    <input type="hidden" name="id" value="{{$note1->id}}">
+    <input type="hidden" name="eleve_id" value="{{$note->eleve_id}}">
+    <input type="hidden" name="id" value="{{$note->id}}">
     <br>
     <button type="submit" class="btn btn-primary" >Modifier</button><br>
     <br>
