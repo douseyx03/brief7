@@ -23,7 +23,7 @@
                             @if ($note->eleve_id = $eleve->id)
                             <tr>
                                         <td>{{ $note->matiere != '' ? $note->matiere : 'fr' }}</td>
-                                        <td>{{ $note->notes != '' ? $note->notes : '0' }}</td>
+                                        <td>{{ $note->note != '' ? $note->note : '0' }}</td>
                                   
                                     <td>
                                         <a href="#" class="btn btn-info mr-2 font-weight-bold text-dark">Modifier</a>
