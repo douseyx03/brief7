@@ -12,8 +12,11 @@ class Note extends Model
     protected $fillable = [
         'note',
         'matiere'
-
     ];
+    // public function eleves()
+    // {
+    //     return $this->belongsTo(Eleve::class);
+    // }
     public static function getMatiere(){
         $option=['Français','Anglais','Mathematique','P/C','SVT'];
         return $option;

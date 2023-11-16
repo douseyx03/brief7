@@ -6,6 +6,7 @@ use App\Models\Eleve;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
+use App\Models\Note;
 use App\Models\User;
 
 
@@ -149,9 +150,15 @@ class EleveController extends Controller
 
     public function destroy($id)
     {
-        $eleve = Eleve::findOrFail($id);
+        $notes= Note::all();
+        foreach ($notes as $note){
+            if($note->eleve_id ==$id ){
+                $note->delete();
+                }
+        $eleve = Eleve::find($id);
         $eleve->delete();
         return redirect('/')->with('success', 'Supprimé avec succès');
+    }
     }
     
 }
